@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <title>Stencil Component Starter</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Stencil Component Starter</title>
 
-  <script type="module" src="/build/cool-emoji-picker.esm.js"></script>
-  <script nomodule src="/build/cool-emoji-picker.js"></script>
-
-</head>
-<body>
-
-  <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
-
-</body>
+    <script type="module" src="/build/cool-emoji-picker.esm.js"></script>
+    <script nomodule src="/build/cool-emoji-picker.js"></script>
+    <script type="module">
+      // TODO: Must be deleted when using Gatsby as a DOCS solution
+      import ky from 'https://unpkg.com/ky/index.js';
+      ky.get('http://localhost:8080/en/emoji-all-groups.json')
+        .json()
+        .then(res => {
+          const coolEmojiPicker = document.querySelector('cool-emoji-picker');
+          coolEmojiPicker.emojiData = res;
+        });
+    </script>
+    <style type="text/css">
+      cool-emoji-picker {
+      }
+    </style>
+  </head>
+  <body>
+    <cool-emoji-picker></cool-emoji-picker>
+  </body>
 </html>

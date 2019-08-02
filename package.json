@@ -1,7 +1,7 @@
 {
   "name": "cool-emoji-picker",
-  "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "version": "4.0.0-beta-1",
+  "description": "A [Tw]emoji Picker for the modern Web.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",
@@ -17,11 +17,33 @@
   "scripts": {
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
+    "start-res-server": "http-server ./emoji-data -p 8080 -g -b --cors 'Access-Control-Allow-Origin: http://localhost:3333'",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "devDependencies": {
-    "@stencil/core": "^1.0.7"
+    "@stencil/core": "^1.0.7",
+    "http-server": "^0.11.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kevinfaguiar/cool-emoji-picker.git"
+  },
+  "keywords": [
+    "emoji-data",
+    "twemoji",
+    "emoji-picker",
+    "emoji-textarea",
+    "sanitize-textarea",
+    "vue",
+    "react",
+    "ember",
+    "angular"
+  ],
+  "dependencies": {
+    "emojibase-data": "^4.0.1",
+    "popper.js": "^1.15.0",
+    "twemoji": "^12.1.2"
+  }
 }

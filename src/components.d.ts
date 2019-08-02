@@ -6,9 +6,25 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  EmojiPack,
+} from './models/emoji-pack';
 
 export namespace Components {
+  interface CoolEmojiPicker {
+    'appendToBody': boolean;
+    'btnEmojiClasses': string;
+    'emojiData': Array<EmojiPack>;
+    'pickerMaxHeight': number;
+    'pickerWidth': number;
+    'recentEmojiLimit': number;
+    'recentEmojiStorageName': string;
+    'recentEmojisFeat': boolean;
+    'skinsSelection': boolean;
+    'twemojiExtension': string;
+    'twemojiFolder': string;
+    'twemojiPath': string;
+  }
   interface MyComponent {
     /**
     * The first name
@@ -28,17 +44,38 @@ export namespace Components {
 declare global {
 
 
+  interface HTMLCoolEmojiPickerElement extends Components.CoolEmojiPicker, HTMLStencilElement {}
+  var HTMLCoolEmojiPickerElement: {
+    prototype: HTMLCoolEmojiPickerElement;
+    new (): HTMLCoolEmojiPickerElement;
+  };
+
   interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
   var HTMLMyComponentElement: {
     prototype: HTMLMyComponentElement;
     new (): HTMLMyComponentElement;
   };
   interface HTMLElementTagNameMap {
+    'cool-emoji-picker': HTMLCoolEmojiPickerElement;
     'my-component': HTMLMyComponentElement;
   }
 }
 
 declare namespace LocalJSX {
+  interface CoolEmojiPicker extends JSXBase.HTMLAttributes<HTMLCoolEmojiPickerElement> {
+    'appendToBody'?: boolean;
+    'btnEmojiClasses'?: string;
+    'emojiData'?: Array<EmojiPack>;
+    'pickerMaxHeight'?: number;
+    'pickerWidth'?: number;
+    'recentEmojiLimit'?: number;
+    'recentEmojiStorageName'?: string;
+    'recentEmojisFeat'?: boolean;
+    'skinsSelection'?: boolean;
+    'twemojiExtension'?: string;
+    'twemojiFolder'?: string;
+    'twemojiPath'?: string;
+  }
   interface MyComponent extends JSXBase.HTMLAttributes<HTMLMyComponentElement> {
     /**
     * The first name
@@ -55,6 +92,7 @@ declare namespace LocalJSX {
   }
 
   interface IntrinsicElements {
+    'cool-emoji-picker': CoolEmojiPicker;
     'my-component': MyComponent;
   }
 }
