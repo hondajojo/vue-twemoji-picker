@@ -12,7 +12,6 @@ import {
 
 export namespace Components {
   interface CoolEmojiPicker {
-    'appendToBody': boolean;
     'btnEmojiClasses': string;
     'emojiData': Array<EmojiPack>;
     'pickerMaxHeight': number;
@@ -63,7 +62,6 @@ declare global {
 
 declare namespace LocalJSX {
   interface CoolEmojiPicker extends JSXBase.HTMLAttributes<HTMLCoolEmojiPickerElement> {
-    'appendToBody'?: boolean;
     'btnEmojiClasses'?: string;
     'emojiData'?: Array<EmojiPack>;
     'pickerMaxHeight'?: number;

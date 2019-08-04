@@ -36,7 +36,6 @@ export class CoolEmojiPicker {
 
   @Prop() pickerWidth: number = 250;
   @Prop() pickerMaxHeight: number = 200;
-  @Prop() appendToBody: boolean = false;
 
   @Prop() skinsSelection: boolean = false;
   @Prop() recentEmojisFeat: boolean = false;
@@ -62,33 +61,36 @@ export class CoolEmojiPicker {
     size: this.twemojiFolder
   };
 
-  componentWillLoad() {
-    /* TODO: ADD RECENT EMOJIS FEAT
-    if (this.recentEmojisFeat) {
-      this.setRecentEmojis();
-    }*/
-
-    this.buildEmojiPack();
-    if (this.emojiPack.length !== 0) {
-      this.emojiListActive = this.emojiPack[0].emojiList;
-    }
-    this.setRandomEmoji();
-    // TODO: Lógica com this.el.shadowRoot.querySelector() para definir estilos
-  }
-
   componentDidLoad() {
-    const elementRef = this.appendToBody
-      ? document.getElementsByTagName('body')[0]
-      : this.btnElement;
-    this.popperInstance = new Popper(elementRef, this.popperDiv, {
-      placement: 'top',
-      /* TODO: Permitir esta variável aqui
+    // TODO: BUG RANDOM EMOJI PEGANDO DOIS EMOJIS (CAVEIRINHA E BUBLE SPEECH)
+    // TODO: Ver como fazer appendToBody...
+    this.bootEmojiPicker();
+    this.popperInstance = new Popper(this.btnElement, this.popperDiv, {
+      placement: 'bottom',
       modifiers: {
         flip: {
           enabled: false
         }
-      }*/
+      }
     });
+  }
+
+  componentWillUpdate() {
+    this.bootEmojiPicker();
+  }
+
+  private bootEmojiPicker() {
+    if (this.emojiPack.length === 0) {
+      this.buildEmojiPack();
+      if (this.emojiPack.length !== 0) {
+        this.emojiListActive = this.emojiPack[0].emojiList;
+        this.setRandomEmoji();
+      }
+    }
+    /* TODO: ADD RECENT EMOJIS FEAT
+    if (this.recentEmojisFeat) {
+      this.setRecentEmojis();
+    }*/
   }
 
   private onClickBtnEmoji() {

@@ -1,4 +1,9 @@
 /* Global */
+#cool-emoji-picker {
+  margin-top: 500px !important;
+  margin-left: 500px !important;
+}
+
 .disable-user-select {
   -moz-user-select: none;
   -webkit-user-select: none;
@@ -25,6 +30,9 @@ img.emoji {
 /* Parent Emoji Popover */
 #popper {
   display: none;
+}
+
+#emoji-popup {
   padding: 5px !important;
   background: #f9f9f9;
   color: black;
